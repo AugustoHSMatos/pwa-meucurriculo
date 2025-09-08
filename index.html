@@ -9,8 +9,38 @@
 </head>
 
 <body>
-    <button id="criarcv">Preencher Curriculo</button>
-    <button> Baixar CV</button>
+
+
+   <button id="criarcv" class="btn">Novo Curriculo</button>
+   <button class="btn"> Baixar CV</button>
+
+    <div id="popup">
+     
+        <div class="conteudo">
+            <h2 id="popuptitulo">Preencha seus dados</h2>
+            <div class="inputs">
+                <label for="nome"> Nome</label>
+                <input id="nome" placeholder=" Digite seu Nome">
+                <label for="objetivo"> Objetivo</label>
+                <input id="objetivo" placeholder="Digite seu Objetivo profissional">
+                <label for="endereco"> Endereço </label>
+                <input id="endereco" placeholder="Digite seu Endereço">
+                <label for="email"> Email</label>
+                <input id="email" placeholder="Digite seu Email">
+                <label for="telefone">Telefone</label>
+                <input id="telefone" placeholder="Digite seu Telefone">
+                <label for="linkedin">Linkedin</label>
+                <input id="linkedin" placeholder="Digite seu Linkedin">
+                <label for="sobre">Sobre Mim</label>
+                <textarea id="sobre" placeholder="Digite Sobre você"></textarea>
+
+                <div class="adicionais">
+
+                
+                <div id="formacoesContainer">
+                    <h3>Formações Acadêmicas</h3>
+                    <button type="button" id="addFormacao" class="btn">+ Adicionar Formação</button>
+                </div>
 
     <div class="modelo-curriculo">
         <div class="titulo">
