@@ -1,135 +1,157 @@
 "use strict";
 
-const abrir = document.querySelector('#criarcv');
-const popuptitulo = document.querySelector('#popuptitulo');
-const btnppcriar = document.querySelector('#btnppCriar');
-const btnppfechar = document.querySelector('#btnppCancelar');
-const inputpopup = document.querySelector('#inputpopup');
-const popup = document.querySelector('#popup');
+document.addEventListener('DOMContentLoaded', () => {
+  const abrir = document.querySelector('#criarcv');
+  const popup = document.querySelector('#popup');
+  const btnppcriar = document.querySelector('#btnppCriar');
+  const btnppfechar = document.querySelector('#btnppCancelar');
+  const curriculo = document.querySelector('#curriculo');
 
+  const formacoesContainer = document.querySelector('#formacoesContainer');
+  const cursosContainer = document.querySelector('#cursosContainer');
+  const btnAddFormacao = document.querySelector('#addFormacao');
+  const btnAddCurso = document.querySelector('#addCurso');
+  const btnBaixar = document.querySelector('#baixarCV');
 
-const modelocv = document.querySelector('#modelocv');
-const curriculo = document.querySelector('#curriculo');
-
-const formacoesContainer = document.querySelector('#formacoesContainer');
-const cursosContainer = document.querySelector('#cursosContainer');
-const btnAddFormacao = document.querySelector('#addFormacao');
-const btnAddCurso = document.querySelector('#addCurso');
-
-
-
-
-btnAddFormacao.addEventListener('click', () => {
-  const input = document.createElement('input');
-  input.placeholder = 'Digite sua formação acadêmica';
-  input.classList.add('formacaoInput');
-  formacoesContainer.appendChild(input);
-});
-
-btnAddCurso.addEventListener('click', () => {
-  const input = document.createElement('input');
-  input.placeholder = 'Digite seu curso complementar';
-  input.classList.add('cursoInput');
-  cursosContainer.appendChild(input);
-
-});
-
-
-
-
-abrir.addEventListener("click", () => {
-  if (modelocv) {
-    modelocv.style.display = 'block';
+  if (!abrir || !popup || !btnppcriar || !btnppfechar || !curriculo || !formacoesContainer || !cursosContainer || !btnAddFormacao || !btnAddCurso || !btnBaixar) {
+    console.error('Algum elemento está faltando no DOM');
+    return;
   }
-  popup.style.display = 'flex';
 
-  btnppfechar.onclick = () => {
+  abrir.addEventListener("click", () => {
+    popup.style.display = 'flex';
+  });
+
+  btnppfechar.addEventListener("click", () => {
     popup.style.display = 'none';
+  });
+
+  btnAddFormacao.addEventListener('click', () => {
+    const input = document.createElement('input');
+    input.placeholder = 'Digite sua formação acadêmica';
+    input.classList.add('formacaoInput');
+    formacoesContainer.appendChild(input);
+  });
+
+  btnAddCurso.addEventListener('click', () => {
+    const input = document.createElement('input');
+    input.placeholder = 'Digite seu curso complementar';
+    input.classList.add('cursoInput');
+    cursosContainer.appendChild(input);
+  });
+
+  function validarCampos(campos) {
+    let valido = true;
+    campos.forEach(campo => {
+      if (!campo.value.trim()) {
+        campo.style.border = "2px solid red";
+        valido = false;
+      } else {
+        campo.style.border = "";
+      }
+    });
+    return valido;
   }
 
-});
+  btnppcriar.addEventListener("click", (event) => {
+    event.preventDefault();
 
+    const nome = document.querySelector('#nome');
+    const objetivo = document.querySelector('#objetivo');
+    const endereco = document.querySelector('#endereco');
+    const email = document.querySelector('#email');
+    const telefone = document.querySelector('#telefone');
+    const sobre = document.querySelector('#sobre');
+    const linkedin = document.querySelector('#linkedin');
 
+    const campos = [nome, objetivo, endereco, email, telefone, sobre, linkedin];
 
-btnppcriar.addEventListener("click", (event) => {
-  let nome = document.querySelector('#nome').value;
-  let objetivo = document.querySelector('#objetivo').value;
-  let endereco = document.querySelector('#endereco').value;
-  let email = document.querySelector('#email').value;
-  let telefone = document.querySelector('#telefone').value;
-  let sobre = document.querySelector('#sobre').value;
-  let linkedin = document.querySelector('#linkedin').value;
+    if (!validarCampos(campos)) {
+      alert('Preencha todos os campos obrigatórios!');
+      return;
+    }
 
-  let formacoes = [];
-  let inputsFormacao = document.querySelectorAll('.formacaoInput');
-  for (let i = 0; i < inputsFormacao.length; i++) {
-    formacoes.push(inputsFormacao[i].value);
-  }
+    const formacoes = Array.from(document.querySelectorAll('.formacaoInput'))
+      .map(input => input.value)
+      .filter(v => v.trim());
 
-  let cursos = [];
-  let inputsCursos = document.querySelectorAll('.cursoInput');
-  for (let i = 0; i < inputsCursos.length; i++) {
-    cursos.push(inputsCursos[i].value);
-  }
+    const cursos = Array.from(document.querySelectorAll('.cursoInput'))
+      .map(input => input.value)
+      .filter(v => v.trim());
 
-
-  let listaFormacoes = '';
-  for (let i = 0; i < formacoes.length; i++) {
-    listaFormacoes += `<li class="info-titulos">${formacoes[i]}</li>`;
-  }
-  let listaCursos = '';
-  for (let i = 0; i < cursos.length; i++) {
-    listaCursos += `<li class="info-titulos">${cursos[i]}</li>`;
-  }
-
-
-
-
-  if (modelocv) {
-    modelocv.style.display = 'none';
-  }
-
-
-  alert(`Informações iniciais:\nNome: ${nome}\nObjetivo: ${objetivo}\nEndereço: ${endereco}\nEmail: ${email}\nTelefone: ${telefone}`);
-  curriculo.innerHTML = ` 
+    let html = `
       <div class="modelo-curriculo">
-            <div class="titulo">
-            <h1>${nome}</h1>
-            <h2>${objetivo}</h2>
+        <div class="titulo">
+          <h1>${nome.value}</h1>
         </div>
-         <div class="info">
-            <p class="info-titulos">Endereço:${endereco}</p>
-            <p class="info-titulos">Telefone:${telefone}</p>
-            <p class="info-titulos">Email:${email}</p>
-            <p class="info-titulos">Linkedin: <a> ${linkedin}</a></p>
+        <div class="info">
+          <p><strong>Endereço:</strong> ${endereco.value}</p>
+          <p><strong>Email:</strong> ${email.value}</p>
+          <p><strong>Telefone:</strong> ${telefone.value}</p>
+          <p><strong>Linkedin:</strong> ${linkedin.value}</p>
         </div>
-          <div>
-            <h1 class="modelo-titulo">Sobre Mim</h1>
-            <p class="info-titulos">${sobre}</p>
+        <div class="info">
+          <h3>Sobre Mim</h3>
+          <p>${sobre.value}</p>
         </div>
-            <div>
-            <h1 class="modelo-titulo">Formação Acadêmica </h1>
-            <ul>${listaFormacoes}</ul>
-            </div>
-            <div>
-            <h1 class="modelo-titulo"> Cursos Complementares </h1>
-            <ul>${listaCursos}</ul>
-        </div>
-        </div>
-      <div>
-      `
-  popup.style.display = 'none';
+        <div class="info">
+          <h3>Objetivo</h3>
+          <p>${objetivo.value}</p>
+        </div>`;
 
-  event.preventDefault();
+    if (formacoes.length) {
+      html += `<div class="info"><h3>Formações Acadêmicas</h3><ul>`;
+      formacoes.forEach(f => {
+        html += `<li>${f}</li>`;
+      });
+      html += `</ul></div>`;
+    }
 
+    if (cursos.length) {
+      html += `<div class="info"><h3>Cursos Complementares</h3><ul>`;
+      cursos.forEach(c => {
+        html += `<li>${c}</li>`;
+      });
+      html += `</ul></div>`;
+    }
 
+    html += `</div>`;
+
+    curriculo.innerHTML = html;
+    curriculo.style.display = 'block';
+    popup.style.display = 'none';
+  });
+
+btnBaixar.addEventListener("click", () => {
+  const element = document.querySelector('#curriculo .modelo-curriculo');
+  if (!element) {
+    alert("Você precisa criar o currículo antes de baixar.");
+    return;
+  }
+
+  const opt = {
+    margin: [0, 0, 0, 0], 
+    filename: 'Meu_Curriculo.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { 
+      scale: 2,  
+      logging: false,  
+      useCORS: true  
+    },
+    jsPDF: { 
+      unit: 'mm', 
+      format: 'a4', 
+      orientation: 'portrait',
+      compressPDF: true,
+      pageSize: 'A4',  
+      hotfixes: ['pxScaling']  
+    }
+  };
+
+  html2pdf().set(opt).from(element).save();
 });
 
 
 
 
-
-
-
-
-
+});

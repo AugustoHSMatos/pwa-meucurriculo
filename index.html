@@ -1,107 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>MeuCurriculo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meu Currículo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#444444" />
+  <link rel="icon" href="icons/icon-192.png" />
 </head>
 
 <body>
 
+  <!-- Botões -->
+  <button id="criarcv" class="btn">Novo Currículo</button>
+  <button id="baixarCV" class="btn">Baixar CV</button>
 
-   <button id="criarcv" class="btn">Novo Curriculo</button>
-   <button class="btn"> Baixar CV</button>
+  <!-- POPUP -->
+  <div id="popup" style="display: none;">
+    <div class="conteudo">
+      <h2 id="popuptitulo">Preencha seus dados</h2>
+      <div class="inputs">
+        <label for="nome">Nome</label>
+        <input id="nome" placeholder="Digite seu Nome" />
+        <label for="objetivo">Objetivo</label>
+        <input id="objetivo" placeholder="Digite seu Objetivo profissional" />
+        <label for="endereco">Endereço</label>
+        <input id="endereco" placeholder="Digite seu Endereço" />
+        <label for="email">Email</label>
+        <input id="email" placeholder="Digite seu Email" />
+        <label for="telefone">Telefone</label>
+        <input id="telefone" placeholder="Digite seu Telefone" />
+        <label for="linkedin">Linkedin</label>
+        <input id="linkedin" placeholder="Digite seu Linkedin" />
+        <label for="sobre">Sobre Mim</label>
+        <textarea id="sobre" placeholder="Digite Sobre você"></textarea>
 
-    <div id="popup">
-     
-        <div class="conteudo">
-            <h2 id="popuptitulo">Preencha seus dados</h2>
-            <div class="inputs">
-                <label for="nome"> Nome</label>
-                <input id="nome" placeholder=" Digite seu Nome">
-                <label for="objetivo"> Objetivo</label>
-                <input id="objetivo" placeholder="Digite seu Objetivo profissional">
-                <label for="endereco"> Endereço </label>
-                <input id="endereco" placeholder="Digite seu Endereço">
-                <label for="email"> Email</label>
-                <input id="email" placeholder="Digite seu Email">
-                <label for="telefone">Telefone</label>
-                <input id="telefone" placeholder="Digite seu Telefone">
-                <label for="linkedin">Linkedin</label>
-                <input id="linkedin" placeholder="Digite seu Linkedin">
-                <label for="sobre">Sobre Mim</label>
-                <textarea id="sobre" placeholder="Digite Sobre você"></textarea>
-
-                <div class="adicionais">
-
-                
-                <div id="formacoesContainer">
-                    <h3>Formações Acadêmicas</h3>
-                    <button type="button" id="addFormacao" class="btn">+ Adicionar Formação</button>
-                </div>
-
-                <div id="cursosContainer">
-                    <h3>Cursos Complementares</h3>
-                    <button type="button" id="addCurso" class="btn">+ Adicionar Curso</button>
-                </div>
-
-                </div>
-            </div>
-            <div class="botoes">
-                <button id="btnppCriar">Criar Cv</button>
-                <button id="btnppCancelar">Cancelar</button>
-            </div>
-
+        <!-- Dinâmico -->
+        <div class="adicionais">
+          <div id="formacoesContainer">
+            <h3>Formações Acadêmicas</h3>
+            <button type="button" id="addFormacao" class="btn">+ Adicionar Formação</button>
+          </div>
+          <div id="cursosContainer">
+            <h3>Cursos Complementares</h3>
+            <button type="button" id="addCurso" class="btn">+ Adicionar Curso</button>
+          </div>
         </div>
+      </div>
+
+      <div class="botoes">
+        <button id="btnppCriar">Criar CV</button>
+        <button id="btnppCancelar">Cancelar</button>
+      </div>
     </div>
+  </div>
 
 
-    <div class="modelo-curriculo" id="modelocv">
-        <div class="titulo">
-            <h1>Nome Pessoa Completo</h1>
-            <h2>Objetivo Profissional</h2>
-        </div>
-
-
-        <div class="info">
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-
-        <div>
-            <h1 class="modelo-titulo">Sobre Mim</h1>
-            <p class="info-titulos">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita cum consectetur
-                reiciendis
-                consequuntur obcaecati, aliquam vel in illum, recusandae eos rem error explicabo, necessitatibus
-                commodi. Sequi neque possimus illum in!
-                Aliquid quibusdam fugit rerum sit, vel nulla! Tenetur expedita tempora laborum earum sunt iure, libero
-                nulla iste, aperiam unde perferendis. Esse vero unde facilis perferendis. Tempora magnam nesciunt ipsa
-                consequatur!
-            </p>
-        </div>
-
-        <div>
-            <h1 class="modelo-titulo">Formação Acadêmica </h1>
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-
-
-        <div>
-            <h1 class="modelo-titulo"> Cursos Complementares </h1>
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="info-titulos">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-
-    </div>
-
-    <div id="curriculo"></div>
-
-    <script src="index.js"></script>
+  <div id="curriculo"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="popup.js"></script>
 </body>
-
 </html>

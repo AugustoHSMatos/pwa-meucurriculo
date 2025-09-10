@@ -1,152 +1,176 @@
 body {
-
-    background-color: #ebe5e5;
-    margin: 0;
-    padding: 30px 300px;
-
+  background-color: #ebe5e5;
+  margin: 0;
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-
-/* informações pessoais*/
-
+/* Informações pessoais */
 .info {
-    text-align: justify;
-    margin-bottom: 20px;
-
+  text-align: justify;
+  margin-bottom: 20px;
 }
 
-/* Tamanho dos textos de informações usados no <p>*/
-.info-titulos{
-    font-size: 20px;
+/* Tamanho dos textos de informações */
+.info-titulos {
+  font-size: 20px;
 }
-/*  titulo do nome e objetivvvo*/
+
+/* Título do nome e objetivo */
 .titulo {
-    text-align: center;
-    display: block;
+  text-align: center;
 }
 
 .titulo h1 {
-    margin: 10px;
-    padding: 0;
-    font-size: 40px;
+  margin: 10px;
+  padding: 0;
+  font-size: 40px;
 }
 
-/* Modelo do curriculo */
+/* Modelo do currículo */
 .modelo-curriculo {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    border: 1px solid black;
-    padding: 10px 100px;
-    margin: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  border: none !important; 
+  padding: 20px; 
+  margin: 0 !important; 
+  box-shadow: none !important; 
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 0; 
+  margin: 0 auto; 
 }
 
+/* Título das seções do currículo */
 .modelo-curriculo .modelo-titulo {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
-.modelo-curriculo p {
-    text-align: justify;
+.modelo-curriculo .info h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-/* Popup*/
+
+.modelo-curriculo .info p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Popup */
 #popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 40px 0;
 }
 
+/* Conteúdo do popup */
 .conteudo {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    width: 500px;
-    text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  margin: auto;
 }
 
 #popuptitulo {
-    font-size: 25px;
-    margin-bottom: 20px;
+  font-size: 25px;
+  margin-bottom: 20px;
 }
 
-#inputpopup {
-    width: 90%;
-    padding: 8px;
-    margin-bottom: 10px;
-    outline: none;
-    border-radius: 15px;
+/* Inputs gerais */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.conteudo button {
-    margin: 5px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+.inputs label {
+  text-align: left;
+  margin: 5px 0;
+  font-size: 18px;
 }
 
-.inputs{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 20px;
+.inputs input,
+.inputs textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.inputs label{
-    text-align: left;
-    margin: 5px 0;
-    font-size: 20px;
+#sobre {
+  min-height: 80px;
+  resize: vertical;
 }
 
-.inputs input{
-    padding: 8px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    outline: none;
+/* Botões */
+.conteudo button,
+.btn {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-#sobre{
-    outline: none;
-    border-radius: 10px;
-    text-align: justify;
-}
-
-#btnppCriar{
-    background: #157408;
-    color: rgb(255, 255, 255);
+#btnppCriar {
+  background: #157408;
+  color: white;
 }
 
 #btnppCancelar {
-    background: #444;
-    color: white;
+  background: #444;
+  color: white;
 }
 
-.btn{
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-   
+.btn {
+  background-color: #444;
+  color: white;
 }
 
-.adicionais{
-    display: flex;
-    gap: 40px;
-    margin: 20px;
+/* Seções adicionais */
+.adicionais {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
 }
 
-
-.formacaoInput , .cursoInput{
-    margin-top: 10px;
+#adicionais h3 {
+  margin-bottom: 10px;
 }
+
+/* Currículo gerado */
+#curriculo {
+  background-color: #fff;
+  border: none !important; 
+  padding: 10px 40px;
+  margin: 20px auto;
+  box-shadow: none !important; 
+  max-width: 800px;
+  color: #000;
+  box-sizing: border-box;
+  border-radius: 0; 
+}
+
