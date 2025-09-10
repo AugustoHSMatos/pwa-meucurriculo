@@ -125,7 +125,23 @@ btnppcriar.addEventListener("click", (event) => {
 
 });
 
+document.getElementById('baixarCV').addEventListener("click", () => {
+  const element = document.querySelector('#curriculo .modelo-curriculo');
+  if (!element) {
+    alert("Você precisa criar o currículo antes de baixar.");
+    return;
+  }
 
+  const opt = {
+    margin: 10,
+    filename: 'Meu_Curriculo.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(element).save();
+});
 
 
 
